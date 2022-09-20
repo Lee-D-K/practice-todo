@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './App.css';
 import reportWebVitals from './reportWebVitals';
 
-const buttonStyle = {
-  borderWidth: 0,
-  backgroundColor: 'white',
-}
 const list = [];
 let type = 0;
 const todoList = ReactDOM.createRoot(document.getElementById('todoList'));
@@ -31,9 +27,9 @@ class TodoForm extends React.Component {
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" className="invisible"></input><br/>
-        <button type="button" style={buttonStyle} onClick={() => this.makeList(0)}>모두 보기</button>|
-        <button type="button" style={buttonStyle} onClick={() => this.makeList(1)}>미완료 일정</button>|
-        <button type="button" style={buttonStyle} onClick={() => this.makeList(2)}>완료 일정</button>
+        <button type="button" className="no-border-button" onClick={() => this.makeList(0)}>모두 보기</button>|
+        <button type="button" className="no-border-button" onClick={() => this.makeList(1)}>미완료 일정</button>|
+        <button type="button" className="no-border-button" onClick={() => this.makeList(2)}>완료 일정</button>
       </form>
     )
   }
@@ -66,21 +62,21 @@ class TodoForm extends React.Component {
     let listItems;
     if(type === 1) {
       listItems = list.map((item, i) =>
-      item.status ? null : <li key={i} style={{marginTop: '1rem'}}><button style={buttonStyle} onClick={() => this.handleClick(i)}>✔️</button>
+      item.status ? null : <li key={i} style={{marginTop: '1rem'}}><button className="no-border-button" onClick={() => this.handleClick(i)}>✔️</button>
        <b style={item.status ? {textDecoration:'line-through'} : {}}>{item.value}</b>
-       <button style={buttonStyle} onClick={() => this.actionDelete(i)}>❌</button></li>
+       <button className="no-border-button" onClick={() => this.actionDelete(i)}>❌</button></li>
       );
     } else if(type === 2) {
       listItems = list.map((item, i) =>
-      item.status ? <li key={i} style={{marginTop: '1rem'}}><button style={buttonStyle} onClick={() => this.handleClick(i)}>✔️</button>
+      item.status ? <li key={i} style={{marginTop: '1rem'}}><button className="no-border-button" onClick={() => this.handleClick(i)}>✔️</button>
        <b style={item.status ? {textDecoration:'line-through'} : {}}>{item.value}</b>
-       <button style={buttonStyle} onClick={() => this.actionDelete(i)}>❌</button></li> : null
+       <button className="no-border-button" onClick={() => this.actionDelete(i)}>❌</button></li> : null
       );
     } else {
       listItems = list.map((item, i) =>
-      <li key={i} style={{marginTop: '1rem'}}><button style={buttonStyle} onClick={() => this.handleClick(i)}>✔️</button>
+      <li key={i} style={{marginTop: '1rem'}}><button className="no-border-button" onClick={() => this.handleClick(i)}>✔️</button>
        <b style={item.status ? {textDecoration:'line-through'} : {}}>{item.value}</b>
-       <button style={buttonStyle} onClick={() => this.actionDelete(i)}>❌</button></li>
+       <button className="no-border-button" onClick={() => this.actionDelete(i)}>❌</button></li>
       );
     }
 

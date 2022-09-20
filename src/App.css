@@ -40,3 +40,8 @@
 .invisible {
   display: none;
 }
+
+.no-border-button {
+  border-width: 0;
+  background-color: white;
+}
