@@ -7,8 +7,8 @@ const buttonStyle = {
   borderWidth: 0,
   backgroundColor: 'white',
 }
-
 const list = [];
+let type = 0;
 const todoList = ReactDOM.createRoot(document.getElementById('todoList'));
 
 class TodoForm extends React.Component {
@@ -31,7 +31,7 @@ class TodoForm extends React.Component {
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" className="invisible"></input><br/>
-        <button type="button" style={buttonStyle} onClick={() => this.makeList()}>모두 보기</button>|
+        <button type="button" style={buttonStyle} onClick={() => this.makeList(0)}>모두 보기</button>|
         <button type="button" style={buttonStyle} onClick={() => this.makeList(1)}>미완료 일정</button>|
         <button type="button" style={buttonStyle} onClick={() => this.makeList(2)}>완료 일정</button>
       </form>
@@ -59,7 +59,10 @@ class TodoForm extends React.Component {
     this.makeList();
   }
 
-  makeList(type = 0) {
+  makeList(n) {
+    if(n != null) {
+      type = n;
+    }
     let listItems;
     if(type === 1) {
       listItems = list.map((item, i) =>
